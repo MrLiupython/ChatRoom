@@ -1,13 +1,12 @@
 #ifndef CR_H
 #define CR_H
 
-#include <chrono>
+#include <ctime>
 
 #define WORDS_LEN 200
 
 // todo: struct 字节对齐未考虑
 typedef int ID;
-typedef std::chrono::time_point<std::chrono::system_clock> Time;
 typedef unsigned int token_t;
 
 // 包头
@@ -22,14 +21,14 @@ typedef struct msgpack {
   ID from;
   ID to;
   char words[WORDS_LEN];
-  Time stamptime;
+  time_t stamptime;
   token_t tk;
 }MsgPack;
 
 // 心跳包 - 1
 typedef struct heartpack {
   ID id;
-  Time stamptime;
+  time_t stamptime;
   token_t tk;
 }HeartPack;
 
@@ -59,7 +58,7 @@ typedef struct user {
   char pwd[12];
   short status;
   unsigned int sockfd;
-  Time last;
+  time_t last;
   int count;
   unsigned int friends[120];
 }User;

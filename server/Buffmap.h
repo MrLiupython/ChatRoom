@@ -19,9 +19,9 @@ class Buffermap {
   }
   
   T* insert(unsigned int sock) {
-    T buffer = new T;
-    buffers.insert({{sock, &buffer}});
-    return &buffer;
+    T* buffer = new T;
+    buffers.insert({{sock, buffer}});
+    return buffer;
   }
   
   int erase(unsigned int sock) {
